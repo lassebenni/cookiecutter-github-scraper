@@ -1,3 +1,6 @@
+from scrape import scraper
+
+
 def main():
     pass
 
