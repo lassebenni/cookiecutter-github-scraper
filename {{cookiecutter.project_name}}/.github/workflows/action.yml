@@ -2,7 +2,7 @@ name: Run application {{cookiecutter.project_name}}
 on:
   push:
   schedule:
-    - cron: "05 7 * * *" # every day at 9:05 am
+    - cron: "05 7 * * *" # every day at 7:05 am
 {% raw %}
 jobs:
   run:
