@@ -2,7 +2,7 @@ from typing import Dict, List
 import requests
 import json
 
-from models.model import Model, drop_duplicates
+from models.model import Model
 
 
 def crawl():
@@ -34,7 +34,7 @@ def parse_models(res_json: List[str]) -> List[Model]:
 
     if res_json:
         for entry in res_json:
-            model = Model(entry.title, entry.summary, entry.link)
+            model = Model(**entry)
             models.append(model)
 
     return models
@@ -49,20 +49,12 @@ def drop_duplicates(path: str) -> List[Model]:
         if text:
             json_models = json.loads(text)
             for model_json in json_models:
-                models.append(
-                    Model(
-                        title=model_json["title"],
-                        summary=model_json["summary"],
-                        url=model_json["url"],
-                    )
-                )
+                models.append(Model(**model_json))
 
     return models
 
 
-def store_models(path: str, models: List[Model], as_json: bool = True):
+def store_models(path: str, models: List[Model]):
     with open(path, "w") as f:
-        if as_json:
-            models = [model.as_dict() for model in models]
-
+        models = [model.dict() for model in models]
         f.write(json.dumps(models, default=str))

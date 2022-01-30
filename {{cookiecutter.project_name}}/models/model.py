@@ -16,17 +16,3 @@ class Model(BaseModel, extra=Extra.allow):
 
 def create_unique_id(title: str):
     return hashlib.md5(title.encode("utf-8")).hexdigest()
-
-
-def drop_duplicates(models: List[Model]):
-    unique_models: List[Model] = []
-    unique_ids = []
-
-    for model in models:
-        if model.id not in unique_ids:
-            unique_ids.append(model.id)
-            unique_models.append(model)
-        else:
-            continue
-
-    return unique_models
