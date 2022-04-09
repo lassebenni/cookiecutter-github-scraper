@@ -1,12 +1,12 @@
 from pydantic import BaseModel, Extra, validator
-from datetime import datetime
+from datetime import datetime as dt
 import hashlib
 from typing import List, Optional
 
 
 class Model(BaseModel, extra=Extra.allow):
     title: str
-    datetime: str = datetime.now().isoformat()
+    datetime: str = dt.now().isoformat()
     id: Optional[str] = ""
 
     @validator("id", pre=True)
