@@ -24,4 +24,7 @@ jobs:
           python main.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: lassebenni/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub sets this for you 
 {% endraw %}
