@@ -1,6 +1,7 @@
 name: Run application {{cookiecutter.project_name}}
 on:
   push:
+  workflow_dispatch:
   schedule:
     - cron: "05 7 * * *" # every day at 7:05 am
 {% raw %}
