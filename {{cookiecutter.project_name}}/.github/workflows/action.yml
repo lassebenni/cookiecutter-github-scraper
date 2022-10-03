@@ -1,10 +1,10 @@
-name: Run application {{cookiecutter.project_name}}
+name: Run application pokemon_scraper
 on:
   push:
   workflow_dispatch:
   schedule:
     - cron: "05 7 * * *" # every day at 7:05 am
-{% raw %}
+
 jobs:
   run:
     strategy:
@@ -20,12 +20,12 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - uses: actions/cache@v2
-      name: Configure pip caching
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
+        name: Configure pip caching
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
       - run: pip install -r requirements.txt
       - name: run main.py
         run: |
@@ -35,4 +35,4 @@ jobs:
       - uses: lassebenni/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub sets this for you 
-{% endraw %}
+

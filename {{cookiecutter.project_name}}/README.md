@@ -5,4 +5,5 @@
 ## Using datamodel-code-generator to generate models from JSON
 
 1. Download JSON file locally e.g. as `result.json`
-2. Run ` make codegen path=<path_file>.json name=<model_name>`
+2. Run ` make codegen path=<path_file>.json name=<model_name>` to create the model in `models`. 
+3. Create a `request` to download the data and parse the response into the Model.
