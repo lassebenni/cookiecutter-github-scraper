@@ -6,10 +6,9 @@ BASE_URL = "https://pokeapi.co/api/v2/"
 
 class PokeAPIScraper():
 
-    def scrape_pokemon(self) -> List[Dict]:
+    def scrape_pokemon(self) -> Dict:
         url = BASE_URL + "/pokemon"
 
-        payload = {}
         headers = {
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:95.0) Gecko/20100101 Firefox/95.0",
             "Accept": "application/json, text/plain, */*",
@@ -22,6 +21,6 @@ class PokeAPIScraper():
             "TE": "trailers",
         }
 
-        response = requests.request("GET", url, headers=headers,data=payload)
+        response = requests.request("GET", url, headers=headers)
 
         return json.loads(response.text)

@@ -2,6 +2,13 @@
 
 [Latest files](https://flatgithub.com/<repo>/blob/<branch>/output/result.json?filename=<path>)
 
+## Setup
+
+1. Run `python -m .venv` to create a virtual environment.
+2. Run `pip install -r requirements.txt` and `pip install -r requirements_local.txt` to install requirements.
+3. Run `python main.py` to run the scraper.
+
+
 ## Using datamodel-code-generator to generate models from JSON
 
 1. Download JSON file locally e.g. as `result.json`
