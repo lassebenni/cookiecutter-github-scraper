@@ -12,27 +12,27 @@ jobs:
       matrix:
         python-version: [3.9]
         os: [ubuntu-18.04]
-    runs-on: ${{ matrix.os }}
-    if: ${{ github.event_name == 'schedule' || github.ref == 'refs/heads/master'}}
+    runs-on: $"{{" matrix.os "}}"
+    if: $"{{" github.event_name == 'schedule' || github.ref == 'refs/heads/master'"}}"
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: $"{{" matrix.python-version "}}"
       - uses: actions/cache@v2
         name: Configure pip caching
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          key: $"{{" runner.os "}}"-pip-$"{{" hashFiles('**/requirements.txt') "}}"
           restore-keys: |
-            ${{ runner.os }}-pip-
+            $"{{" runner.os "}}"-pip-
       - run: pip install -r requirements.txt
       - name: run main.py
         run: |
           python main.py
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: $"{{" secrets.GITHUB_TOKEN "}}"
       - uses: lassebenni/publish-to-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub sets this for you 
+          GITHUB_TOKEN: $"{{" secrets.GITHUB_TOKEN "}}" # GitHub sets this for you 
 
