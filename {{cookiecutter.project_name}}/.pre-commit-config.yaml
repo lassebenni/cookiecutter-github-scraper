@@ -24,11 +24,6 @@ repos:
       - id: black
         name: Run black formatter
         language_version: python3.8
-  - repo: https://github.com/humitos/mirrors-autoflake.git
-    rev: v1.1
-    hooks:
-      - id: autoflake
-        args: ["--in-place", "--remove-all-unused-imports"]
   - repo: https://github.com/asottile/pyupgrade
     rev: v2.26.0
     hooks:
@@ -40,7 +35,3 @@ repos:
     hooks:
       - id: python-safety-dependencies-check
         name: Check for vulnerable dependencies
-  - repo: git://github.com/detailyang/pre-commit-shell
-    rev: 1.0.5
-    hooks:
-      - id: shell-lint
