@@ -1,3 +1,4 @@
+{% raw %}
 name: Run application pokemon_scraper
 on:
   push:
@@ -35,4 +36,4 @@ jobs:
       - uses: lassebenni/publish-to-github-action@master
         env:
           GITHUB_TOKEN: $"{{" secrets.GITHUB_TOKEN "}}" # GitHub sets this for you 
-
+{% endraw %}
